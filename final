@@ -1,0 +1,150 @@
+// project 3
+// Created by David Torres
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Final
+{
+   public static void main(String args[]) throws IOException
+   {
+   
+      GamedayReport reportGame;
+      reportGame = new GamedayReport();
+      reportGame.appMain();
+
+
+   }
+   
+}
+
+class GamedayReport
+
+{
+   //declaring variables
+   
+   int salesNumber;
+   float salesAmount, ytdSales, employeeBonus, totalDailysales, totalYtdsales, totalSalesamount ;
+   String date, companyName, salesType,empName;
+   Scanner stdin;
+   
+
+
+
+public void appMain() throws IOException
+{
+   stdin = new Scanner(System.in);
+   InitializeVariables();
+   GetTransBasics();
+   GetProcessTrans();
+   GetEmployeebonus();
+   GetTotaldailysales();
+   HeaderReportOut();
+   UpdatetotalYtdsales();
+   
+  while (salesNumber != 0)
+  {
+   GetProcessTrans();
+   }
+   
+   GetReportsummary();
+
+   
+}
+
+void InitializeVariables()
+{
+   
+   salesNumber = -1;
+   salesAmount = 0;
+   ytdSales = 0;
+   employeeBonus = 0;
+   companyName ="Name";
+   salesType = "Unassigned";
+   empName = "Name";
+   date = "dd/mm/yyyy";
+   totalDailysales = 0;
+   totalYtdsales = 0;
+   totalSalesamount = 0;
+}
+
+void GetTransBasics()
+{
+//input
+
+   System.out.println("Please input the date: ") ;
+   date = stdin.nextLine() ;
+}   
+void GetProcessTrans()
+{   
+   System.out.println("Enter Employee Name;");
+   empName = stdin.nextLine();
+
+   System.out.println("Enter Year to Date Sales Amount;");
+   ytdSales = stdin.nextFloat();
+
+   System.out.println("Enter Sales Number;");
+   salesNumber = stdin.nextInt();
+
+   System.out.println("Enter Sales Amount;");
+   salesAmount = stdin.nextFloat();
+
+   System.out.println("Enter Sales Type;");
+   salesType = stdin.nextLine();
+   salesType = stdin.nextLine();       
+}
+
+void GetTotalSalesAmount()
+{
+   totalSalesamount = salesAmount;
+
+} 
+//void GetProcessTrans()
+//{
+   //GetEmpname();
+   //GetSalesAmount();
+//}
+void GetTotaldailysales()
+{
+   
+  totalDailysales = totalDailysales + totalSalesamount;
+}
+   
+void GetEmployeebonus()
+{
+  employeeBonus = (salesAmount * 0.05f); 
+} 
+
+void UpdatetotalYtdsales()
+{ 
+  totalYtdsales = ytdSales + totalSalesamount ;
+
+}
+
+
+   
+void HeaderReportOut() 
+{
+   System.out.println("Employee name" + empName) ;
+   System.out.println("Year to Date Sales" + ytdSales);
+   System.out.println("Updated Year to Date Sales" + totalYtdsales);
+   System.out.println("This the Sales Amount;" + salesAmount);
+
+}
+void GetReportsummary() 
+{
+   System.out.println("*******Metro Event Sports Specialists*******") ;
+   System.out.println("****************Sales Sheet*****************") ;
+   System.out.println(" Date: " + date) ;
+   System.out.println("Employee Bonus" + employeeBonus);
+   System.out.println("Year to Date Sales" + ytdSales);
+   System.out.println("Updated Year to Date Sales" + totalYtdsales);
+   System.out.println("Total Sales for the day;" + salesAmount);
+
+}
+
+ 
+
+}
+
+//end of project 3
