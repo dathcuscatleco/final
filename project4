@@ -1,0 +1,209 @@
+// project 4
+// Created by David Torres
+//12/2019
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Project4Torres
+{
+   public static void main(String args[]) throws IOException
+   {
+   
+      GamedayReport reportGame;
+      reportGame = new GamedayReport();
+      reportGame.appMain();
+
+
+   }
+   
+}
+
+class GamedayReport
+
+{
+   //declaring variables
+   
+   int salesNumber;
+   float salesAmount, ytdSales, employeeBonus, totalDailysales, totalYtdsales, totalSalesamount ;
+   String date, companyName, salesType,empName, a, f, s;
+   Scanner stdin;
+   
+
+
+
+public void appMain() throws IOException
+{
+   stdin = new Scanner(System.in);
+   InitializeVariables();
+   GetTransBasics();
+   GetProcessTrans();
+   
+   //while (salesNumber != 0)  //fix me, a bit confused on while loops
+   
+  //{
+    //GetProcessTrans();
+   //}
+   
+   GetEmployeebonus();
+   GetTotaldailysales();
+   UpdatetotalYtdsales();
+   
+  
+   HeaderReport();
+   //SalesSheetA(); //Here i tried to assing the basic input to indidual report or arrays, not succesful
+   //SalesSheetB();
+   SalesSheetC();
+   GetReportsummary();
+
+   
+}
+
+void InitializeVariables()
+{
+   
+   salesNumber = -1;
+   salesAmount = 0;
+   ytdSales = 0;
+   employeeBonus = 0;
+   companyName ="Name";
+   salesType = "Unassigned";
+   empName = "Name";
+   date = "dd/mm/yyyy";
+   totalDailysales = 0;
+   totalYtdsales = 0;
+   totalSalesamount = 0;
+}
+
+void GetTransBasics() throws IOException
+{
+//input
+
+   System.out.println("Please input the date: ") ;
+   date = stdin.nextLine() ;
+}   
+void GetProcessTrans()
+{   
+   System.out.println("Enter Employee Name;"); //hit enter twice for name, could not fix the issue
+   empName = stdin.nextLine();
+   System.out.println("Press Enter Again");
+   empName = stdin.nextLine();
+  
+  
+   System.out.println("Enter Year to Date Sales Amount;");
+   ytdSales = stdin.nextFloat();
+  
+   System.out.println("Enter Sales Number;");
+   salesNumber = stdin.nextInt();
+   
+   System.out.println("Enter Sales Type;");
+   salesType = stdin.nextLine();
+   salesType = stdin.nextLine();
+   
+     
+
+   System.out.println("Enter Sales Amount;");
+   salesAmount = stdin.nextFloat();
+   
+   
+  // while (salesAmount != 0) //trouble with this code, unable to get the loop fix. confused about loops
+  //{
+   //GetEmployeebonus();
+  // }
+   
+}
+ 
+
+void GetTotalSalesAmount()
+{
+   totalSalesamount = salesAmount;
+
+} 
+
+void GetTotaldailysales() //total daily sales per employee
+{
+   
+  totalDailysales = totalDailysales + totalSalesamount;
+}
+   
+void GetEmployeebonus() //employee bonus
+{
+  employeeBonus = (salesAmount * 0.05f); 
+} 
+
+void UpdatetotalYtdsales() //ending year to date sales amount 
+{ 
+  totalYtdsales = ytdSales + totalSalesamount ;
+
+}
+
+//void TotalSalesF  //sales for food fix me. could not get the string array working properly
+//{
+  // totalSalesf = f + salesAmount;
+
+//}
+
+//void TotalSalesS  //sales for food fix me. could not get the string array working properly
+//{
+  // totalSalesS = S + salesAmount;
+
+//}
+
+//void TotalSalesA  //sales for food fix me. could not get the string array working properly
+//{
+  // totalSalesa = a + salesAmount;
+
+//}
+
+void HeaderReport() 
+{
+   System.out.println("*******Metro Event Sports Specialists*******") ;
+   System.out.println("****************Sales Sheet*****************") ;
+   System.out.println(" Date: " + date) ;
+}
+  // System.out.println( "test" + GetProcessTrans());
+//}  
+//void SalesSheetA() 
+//{
+  // System.out.println("Employee name" + empName) ;
+  // System.out.println("Year to Date Sales" + ytdSales);
+   //System.out.println("Updated Year to Date Sales" + totalYtdsales);
+   //System.out.println("This the Sales Amount;" + salesAmount);
+//}   
+//void SalesSheetB() 
+//{
+   
+  // System.out.println("Employee name" + empName) ;
+  // System.out.println("Year to Date Sales" + ytdSales);
+  // System.out.println("Updated Year to Date Sales" + totalYtdsales);
+  // System.out.println("This the Sales Amount;" + salesAmount);
+//}  
+
+void SalesSheetC() 
+{
+   System.out.println("Employee name" + empName) ;
+   System.out.println("Year to Date Sales" + ytdSales);
+   System.out.println("Updated Year to Date Sales" + totalYtdsales);
+   System.out.println("This the Sales Amount;" + salesAmount);
+
+}
+void GetReportsummary() 
+{
+   System.out.println("Employee Bonus" + employeeBonus);
+   System.out.println("Year to Date Sales" + ytdSales);
+   System.out.println("Updated Year to Date Sales" + totalYtdsales);
+   System.out.println("Total Sales for the day;" + salesAmount);
+   System.out.println("Total Sales for food and soft drinks") ;
+   System.out.println("Total Sales for Alcohol; ") ;
+   System.out.println("Total Sales for the sundries;") ;
+   System.out.println("Total Sale for the Day;") ;
+   System.out.println("Total Year to Date Sales;") ;
+   System.out.println("Highest Single Sale Amount;") ;
+   System.out.println("Employee with single highest amount; C Moore") ;
+}
+
+ 
+
+}
+
+//end of project 3
